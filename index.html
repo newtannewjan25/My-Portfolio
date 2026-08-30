@@ -370,6 +370,131 @@
       font-weight: 700;
     }
 
+    /* Design Gallery (new) */
+    .subsection-heading {
+      margin: 60px 0 26px;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .subsection-heading h3 {
+      font-size: 1.5rem;
+    }
+
+    .subsection-heading span.pill {
+      background: var(--surface-2);
+      color: var(--primary);
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .design-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .design-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s;
+    }
+
+    .design-card:hover {
+      transform: translateY(-7px);
+    }
+
+    .design-thumb {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: var(--surface-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .design-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+
+    .design-thumb:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Lightbox */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 11, 20, 0.88);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-overlay img {
+      max-width: min(900px, 100%);
+      max-height: 85vh;
+      border-radius: 14px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+
+    .design-thumb.contain img {
+      object-fit: contain;
+      padding: 18px;
+    }
+
+    .design-body {
+      padding: 20px 22px 24px;
+    }
+
+    .design-body h4 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .design-body p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 14px;
+    }
+
     /* Process */
     .process-grid {
       display: grid;
@@ -489,7 +614,8 @@
       }
 
       .skills-grid,
-      .process-grid {
+      .process-grid,
+      .design-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -518,7 +644,8 @@
     @media (max-width: 600px) {
       .skills-grid,
       .projects-grid,
-      .process-grid {
+      .process-grid,
+      .design-grid {
         grid-template-columns: 1fr;
       }
 
@@ -663,6 +790,12 @@
         </div>
 
         <div class="skill-card reveal">
+          <div class="skill-icon">🎨</div>
+          <h3>Graphic Design</h3>
+          <p>Logo design, posters, banners and business cards using Canva and design tools.</p>
+        </div>
+
+        <div class="skill-card reveal">
           <div class="skill-icon">🎥</div>
           <h3>Product Demonstration</h3>
           <p>Screen recording, product walkthroughs and technical presentations.</p>
@@ -741,6 +874,86 @@
             <span class="tag">Responsive</span>
             <span class="tag">Modern UI</span>
             <span class="tag">Portfolio</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Graphic Design Gallery -->
+      <div class="subsection-heading reveal">
+        <h3>🎨 Graphic Design Work</h3>
+        <span class="pill">05 / DESIGN</span>
+      </div>
+
+      <div class="design-grid">
+
+        <div class="design-card reveal">
+          <div class="design-thumb" onclick="openLightbox('assets/design-newrex-logo.jpg')">
+            <img src="assets/design-newrex-logo.jpg" alt="NEW-REX emblem logo design" loading="lazy">
+          </div>
+          <div class="design-body">
+            <h4>NEW-REX Emblem Logo</h4>
+            <p>A bold crest-style logo combining royal and modern gaming aesthetics, built with contrasting neon accents.</p>
+            <div class="tags">
+              <span class="tag">Logo Design</span>
+              <span class="tag">Branding</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="design-card reveal">
+          <div class="design-thumb contain" onclick="openLightbox('assets/design-newjan-logo.png')">
+            <img src="assets/design-newjan-logo.png" alt="Newjan lion logo design" loading="lazy">
+          </div>
+          <div class="design-body">
+            <h4>NEWJAN Personal Brand Logo</h4>
+            <p>A minimal lion mark paired with clean typography, designed as a personal identity mark with the tagline "Don't Touch My Identity Again."</p>
+            <div class="tags">
+              <span class="tag">Logo Design</span>
+              <span class="tag">Personal Branding</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="design-card reveal">
+          <div class="design-thumb" onclick="openLightbox('assets/design-business-card.jpg')">
+            <img src="assets/design-business-card.jpg" alt="Business card design" loading="lazy">
+          </div>
+          <div class="design-body">
+            <h4>Professional Business Card</h4>
+            <p>A clean two-tone business card layout with contact details, geometric accents and a professional headshot placement.</p>
+            <div class="tags">
+              <span class="tag">Print Design</span>
+              <span class="tag">Business Card</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="design-card reveal">
+          <div class="design-thumb contain" onclick="openLightbox('assets/design-assignment-poster.jpg')">
+            <img src="assets/design-assignment-poster.jpg" alt="Assignment and typing services poster" loading="lazy">
+          </div>
+          <div class="design-body">
+            <h4>Assignment & Typing Services Poster</h4>
+            <p>A service-promotion poster designed with clear sections for services offered, key benefits and contact details.</p>
+            <div class="tags">
+              <span class="tag">Poster Design</span>
+              <span class="tag">Marketing</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="design-card reveal">
+          <div class="design-thumb" onclick="openLightbox('assets/design-bookfair-banner.jpg')">
+            <img src="assets/design-bookfair-banner.jpg" alt="Colombo International Book Fair banner design" loading="lazy">
+          </div>
+          <div class="design-body">
+            <h4>Colombo Book Fair Event Banner</h4>
+            <p>An event promotion banner featuring a structured layout with dates, venue details and highlights for an international book fair.</p>
+            <div class="tags">
+              <span class="tag">Banner Design</span>
+              <span class="tag">Event Promotion</span>
+            </div>
           </div>
         </div>
 
@@ -863,6 +1076,12 @@
     </div>
   </section>
 
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
+    <img id="lightboxImg" src="" alt="Enlarged design preview">
+  </div>
+
   <footer>
     <p>© <span id="year"></span> Newtan Newjan. Built with HTML, CSS & JavaScript.</p>
   </footer>
@@ -922,6 +1141,27 @@
 
     // Current Year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Lightbox (click design image to view full size)
+    const lightboxOverlay = document.getElementById("lightboxOverlay");
+    const lightboxImg = document.getElementById("lightboxImg");
+
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightboxOverlay.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox(e) {
+      if (e.target.id === "lightboxImg") return; // clicking image itself shouldn't close
+      lightboxOverlay.classList.remove("active");
+      lightboxImg.src = "";
+      document.body.style.overflow = "";
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLightbox({ target: {} });
+    });
   </script>
 
 </body>
